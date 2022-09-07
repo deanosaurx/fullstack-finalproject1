@@ -1,6 +1,10 @@
 import express from "express";
+import "dotenv/config";
+import { dbConnect } from "./config/db.js";
 
 const app = express();
+
+dbConnect();
 
 app.get("/", (req, res) => res.send("HELLO THERE!"));
 
