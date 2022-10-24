@@ -1,12 +1,14 @@
 import express from "express";
 import "dotenv/config";
 import { dbConnect } from "./config/db.js";
+import router from "./routes/userRouter.js";
 
 const app = express();
 
 dbConnect();
 
-app.get("/", (req, res) => res.send("HELLO THERE!"));
+app.use(express.json());
+app.use("/", router);
 
 const PORT = process.env.PORT || 5000;
 
