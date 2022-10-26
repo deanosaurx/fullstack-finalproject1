@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const memberSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const UsersDB = mongoose.connection.useDb("UsersDB");
+const SubscriptionsDB = mongoose.connection.useDb("SubscriptionsDB");
 
-const User = UsersDB.model("user", userSchema);
+const Member = SubscriptionsDB.model("member", memberSchema);
 
-export default User;
+export default Member;
