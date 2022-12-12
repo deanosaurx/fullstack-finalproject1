@@ -1,9 +1,9 @@
 import User from "../models/UsersDB/User.js";
 
-export const getUsers = (req, res, next) => {
-  const user = User.find()
-    .then((res) => console.log(res))
-    .finally(console.log(user));
+export const getUsers = async (req, res, next) => {
+  const users = await User.find();
+  res.status(200).json({ success: true, users });
+
   next();
 };
 
