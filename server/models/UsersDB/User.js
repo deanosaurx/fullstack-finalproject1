@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: [6, "Password must be at least 6 characters"],
   },
+  age: {
+    type: Number,
+    required: true,
+  },
 });
 
 const UsersDB = mongoose.connection.useDb("UsersDB");

@@ -13,3 +13,21 @@ export const createUser = async (req, res, next) => {
   res.status(201).json({ success: true, user });
   next();
 };
+
+export const updateUser = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const user = await User.findById(id);
+
+    if (!user) {
+      res.status(404).json({ success: false, reason: "No such user" });
+    }
+    user.password = req.body.password;
+    user.age = req.body.age;
+    await user.save();
+    res.status(201).json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ success: false, error });
+  }
+};
