@@ -8,7 +8,6 @@ export const getUsers = async (req, res, next) => {
 };
 
 export const createUser = async (req, res, next) => {
-  console.log(req.body);
   const user = await User.create(req.body);
   res.status(201).json({ success: true, user });
   next();
